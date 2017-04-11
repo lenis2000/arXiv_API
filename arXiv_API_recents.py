@@ -54,7 +54,11 @@ for entry in feed.entries:
 
     target_file.write('[' + ', '.join(author.name for author in entry.authors).encode('utf-8') + ', "')
     target_file.write(entry.title.encode('utf-8').replace('\n', '')  + '"](')
-    target_file.write(entry.id + ')\n')
+    target_file.write(entry.id + ')\n\n')
+
+    target_file.write('<!--more-->\n\n')
+
+    target_file.write(entry.summary)
 
     target_file.close()
 
