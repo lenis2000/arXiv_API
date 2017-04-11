@@ -1,13 +1,14 @@
 import urllib
 import feedparser
+import codecs
 
 # Base api query url
 base_url = 'http://export.arxiv.org/api/query?';
 
 # Search parameters
-search_query = 'au:Borodin_A' # search for electron in all fields
+search_query = 'au:Borodin_A OR Baik_J OR Corwin_I OR Gorin_V OR Petrov_L' # search for electron in all fields
 start = 0                     # retreive the first 5 results
-max_results = 5
+max_results = 2
 
 query = 'search_query=%s&start=%i&max_results=%i&sortBy=submittedDate&sortOrder=descending' % (search_query,
                                                     start,
@@ -36,12 +37,13 @@ print 'totalResults for this query: %s' % feed.feed.opensearch_totalresults
 print 'itemsPerPage for this query: %s' % feed.feed.opensearch_itemsperpage
 print 'startIndex for this query: %s'   % feed.feed.opensearch_startindex
 
+print '============================'
+
 # Run through each entry, and print out information
 for entry in feed.entries:
-    print 'e-print metadata'
-    print 'arxiv-id: %s' % entry.id.split('/abs/')[-1]
+    print entry.id.split('/abs/')[-1][:-2] + ' [' + entry.tags[0]['term'] + ']'
     print 'Published: %s' % entry.published
-    print 'Title:  %s' % entry.title
+    print 'Title:  %s' % entry.title.encode('utf-8')
     
     # feedparser v4.1 only grabs the first author
     author_string = entry.author
@@ -90,11 +92,12 @@ for entry in feed.entries:
     # This is a dirty hack to get the primary_category, just take the
     # first element in entry.tags.  If anyone knows a better way to do
     # this, please email the list!
-    print 'Primary Category: %s' % entry.tags[0]['term']
     
     # Lets get all the categories
-    all_categories = [t['term'] for t in entry.tags]
-    print 'All Categories: %s' % (', ').join(all_categories)
+    # all_categories = [t['term'] for t in entry.tags]
+    # print 'All Categories: %s' % (', ').join(all_categories)
     
     # The abstract is in the <summary> element
-    print 'Abstract: %s' %  entry.summary
+    # print 'Abstract: %s' %  entry.summary
+
+    print '============================'
