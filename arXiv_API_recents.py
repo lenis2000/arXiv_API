@@ -60,5 +60,7 @@ for entry in feed.entries:
 
     target_file.write(entry.summary)
 
+    target_file.write('\n')
+
     target_file.close()
 
