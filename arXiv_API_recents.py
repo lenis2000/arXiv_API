@@ -6,7 +6,7 @@ import codecs
 base_url = 'http://export.arxiv.org/api/query?';
 
 # Search parameters
-search_query = 'au:Borodin_A OR Baik_J OR Corwin_I OR Gorin_V OR Petrov_L OR Barraquand_G OR Bufetov_A OR Kuan_J OR Rahman_M OR Shen_H OR Saenz_A OR Sun_Y OR Tsai_L OR Knizel_A OR Sun_X OR Dimitrov_E OR Cuenca_C OR Aggarwal_A OR Ahn_A OR Wu_X OR Ghosal_P OR Parekh_S OR Matveev_K OR Moll_A OR Liu_Z OR Liao_Y OR Silva_G'
+search_query = 'au:Borodin_A OR Baik_J OR Corwin_I OR Gorin_V OR Petrov_L OR Barraquand_G OR Bufetov_A OR Kuan_J OR Rahman_M OR Shen_H OR Saenz_A OR Silva_G OR Sun_Y OR Tsai_L OR Knizel_A OR Sun_X OR Matetski_K OR Dimitrov_E OR Cuenca_C OR Aggarwal_A OR Ahn_A OR Liao_Y OR Wu_X OR Ghosal_P OR Parekh_S OR Rychnovsky_M OR Sitaraman_M OR Liu_Z OR Matveev_K OR Moll_A OR Lin_Y'
 start = 0
 max_results = 100
 
