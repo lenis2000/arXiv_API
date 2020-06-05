@@ -1,4 +1,4 @@
-import urllib.request, urllib.parse, urllib.error
+import urllib
 import feedparser
 import codecs
 
@@ -6,7 +6,7 @@ import codecs
 base_url = 'http://export.arxiv.org/api/query?';
 
 # Search parameters
-search_query = 'au:Borodin_A%20OR%20Baik_J%20OR%20Corwin_I%20OR%20Gorin_V%20OR%20Petrov_L%20OR%20Barraquand_G%20OR%20Bufetov_A%20OR%20Kuan_J%20OR%20Rahman_M%20OR%20Shen_H%20OR%20Saenz_A%20OR%20Silva_G%20OR%20Sun_Y%20OR%20Tsai_L%20OR%20Knizel_A%20OR%20Sun_X%20OR%20Dimitrov_E%20OR%20Matetski_K%20OR%20Landon_B%20OR%20Korotkikh_S%20OR%20Peski_R%20OR%20Sitaraman_M%20OR%20Cuenca_C%20OR%20Aggarwal_A%20OR%20Ahn_A%20OR%20Liao_Y%20OR%20Wu_X%20OR%20Ghosal_P%20OR%20Parekh_S%20OR%20Rychnovsky_M%20OR%20Sitaraman_M%20OR%20Liu_Z%20OR%20Matveev_K%20OR%20Moll_A%20OR%20Lin_Y%20OR%20Russkikh_M%20OR%20Prokhorov_A'
+search_query = 'au:Borodin_A OR Baik_J OR Corwin_I OR Gorin_V OR Petrov_L OR Barraquand_G OR Bufetov_A OR Kuan_J OR Rahman_M OR Shen_H OR Saenz_A OR Silva_G OR Sun_Y OR Tsai_L OR Knizel_A OR Sun_X OR Dimitrov_E OR Matetski_K OR Landon_B OR Korotkikh_S OR Peski_R OR Sitaraman_M OR Cuenca_C OR Aggarwal_A OR Ahn_A OR Liao_Y OR Wu_X OR Ghosal_P OR Parekh_S OR Rychnovsky_M OR Sitaraman_M OR Liu_Z OR Matveev_K OR Moll_A OR Lin_Y OR Russkikh_M OR Prokhorov_A'
 start = 0
 max_results = 100
 
@@ -23,19 +23,19 @@ feedparser._FeedParserMixin.namespaces['http://a9.com/-/spec/opensearch/1.1/'] =
 feedparser._FeedParserMixin.namespaces['http://arxiv.org/schemas/atom'] = 'arxiv'
 
 # perform a GET request using the base_url and query
-response = urllib.request.urlopen(base_url+query).read()
+response = urllib.urlopen(base_url+query).read()
 
 # parse the response using feedparser
 feed = feedparser.parse(response)
 
 # print out feed information
-print('Feed title: %s' % feed.feed.title)
-print('Feed last updated: %s' % feed.feed.updated)
+print 'Feed title: %s' % feed.feed.title
+print 'Feed last updated: %s' % feed.feed.updated
 
 # print opensearch metadata
-print('totalResults for this query: %s' % feed.feed.opensearch_totalresults)
-print('itemsPerPage for this query: %s' % feed.feed.opensearch_itemsperpage)
-print('startIndex for this query: %s'   % feed.feed.opensearch_startindex)
+print 'totalResults for this query: %s' % feed.feed.opensearch_totalresults
+print 'itemsPerPage for this query: %s' % feed.feed.opensearch_itemsperpage
+print 'startIndex for this query: %s'   % feed.feed.opensearch_startindex
 
 
 # Run through each entry, and print out information
@@ -52,8 +52,8 @@ for entry in feed.entries:
     target_file.write('---\n')
     target_file.write('\n')
 
-    target_file.write('<b>' + '</b>, <b>'.join(author.name for author in entry.authors) + '</b>, "<i>')
-    target_file.write(entry.title.replace('\n', '')  + '</i>" ([arXiv](')
+    target_file.write('<b>' + '</b>, <b>'.join(author.name for author in entry.authors).encode('utf-8') + '</b>, "<i>')
+    target_file.write(entry.title.encode('utf-8').replace('\n', '')  + '</i>" ([arXiv](')
     target_file.write(entry.id + '))\n')
 
     target_file.close()
