@@ -1,4 +1,4 @@
-import urllib.request, urllib.parse, urllib.error
+import urllib
 import feedparser
 import codecs
 
@@ -19,8 +19,8 @@ query = 'search_query=%s&start=%i&max_results=%i&sortBy=submittedDate&sortOrder=
 # Some entry metadata lives in the arXiv namespace.
 # This is a hack to expose both of these namespaces in
 # feedparser v4.1
-feedparser._FeedParserMixin.namespaces['http://a9.com/-/spec/opensearch/1.1/'] = 'opensearch'
-feedparser._FeedParserMixin.namespaces['http://arxiv.org/schemas/atom'] = 'arxiv'
+#  feedparser._FeedParserMixin.namespaces['http://a9.com/-/spec/opensearch/1.1/'] = 'opensearch'
+#  feedparser._FeedParserMixin.namespaces['http://arxiv.org/schemas/atom'] = 'arxiv'
 
 # perform a GET request using the base_url and query
 response = urllib.request.urlopen(base_url+query).read()
