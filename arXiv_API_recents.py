@@ -8,7 +8,7 @@ base_url = 'http://export.arxiv.org/api/query?';
 # Search parameters
 search_query = 'au:Borodin_A%20OR%20Baik_J%20OR%20Corwin_I%20OR%20Gorin_V%20OR%20Petrov_L%20OR%20Barraquand_G%20OR%20Bufetov_A%20OR%20Kuan_J%20OR%20Rahman_M%20OR%20Shen_H%20OR%20Saenz_A%20OR%20Silva_G%20OR%20Sun_Y%20OR%20Tsai_L%20OR%20Knizel_A%20OR%20Sun_X%20OR%20Dimitrov_E%20OR%20Matetski_K%20OR%20Landon_B%20OR%20Korotkikh_S%20OR%20Peski_R%20OR%20Sitaraman_M%20OR%20Cuenca_C%20OR%20Aggarwal_A%20OR%20Ahn_A%20OR%20Liao_Y%20OR%20Wu_X%20OR%20Ghosal_P%20OR%20Parekh_S%20OR%20Rychnovsky_M%20OR%20Sitaraman_M%20OR%20Liu_Z%20OR%20Matveev_K%20OR%20Moll_A%20OR%20Lin_Y%20OR%20Russkikh_M%20OR%20Prokhorov_A%20OR%20Das_S%20OR%20Drillick_H'
 start = 0
-max_results = 500
+max_results = 900
 
 query = 'search_query=%s&start=%i&max_results=%i&sortBy=submittedDate&sortOrder=descending' % (search_query,
                                                     start,
